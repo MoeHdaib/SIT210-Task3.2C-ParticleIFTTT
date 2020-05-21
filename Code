@@ -28,7 +28,7 @@ void loop()
     if (cm < 158) Particle.publish("Someone entered", "Alert");
    
     // Wait 1 seconds
-    delay(100);
+    delay(1000);
     
     
 }

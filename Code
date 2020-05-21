@@ -21,12 +21,14 @@ void loop()
     //measure the distance 
     cm = rangeFinder.getDistanceCM();
     
-    //if statements to count the distance if its close or far then publish it 
-    if (cm > 160) Particle.publish("distance too far", (String) cm);
-    if (cm < -1) Particle.publish("distance too close", (String) cm);
+    //vriable that contains the size of the door
+    int i = 158
     
-    // Wait 10 seconds
-    delay(10000);
+    //if statements to count the distance decrease to know someone has entered 
+    if (cm < 158) Particle.publish("Someone entered", "Alert");
+   
+    // Wait 1 seconds
+    delay(100);
     
     
 }

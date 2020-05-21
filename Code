@@ -1,0 +1,32 @@
+
+//The ultrasound sensor library
+#include <HC_SR04/HC_SR04.h>
+
+//Creating variables
+int cm = 0;
+//assigning the pins 
+int trigPin = D4;
+int echoPin = D5;
+
+//allocating the pins to the sensor 
+HC_SR04 rangeFinder = HC_SR04(trigPin, echoPin);
+
+void setup()
+{
+
+}
+
+void loop()
+{
+    //measure the distance 
+    cm = rangeFinder.getDistanceCM();
+    
+    //if statements to count the distance if its close or far then publish it 
+    if (cm > 160) Particle.publish("distance too far", (String) cm);
+    if (cm < -1) Particle.publish("distance too close", (String) cm);
+    
+    // Wait 10 seconds
+    delay(10000);
+    
+    
+}
